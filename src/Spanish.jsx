@@ -8,19 +8,36 @@ export default function Spanish() {
 
   useEffect(() => {
     const noBtn = document.getElementById("noBtn");
-    noBtn.addEventListener("mouseover", (e) => {
-      if (isLeft) {
-        e.target.style.marginLeft = "15vw";
-        e.target.style.marginRight = "0px";
-        setIsRight(true);
-        setIsLeft(false);
-      } else if (!isLeft) {
-        e.target.style.marginRight = "15vw";
-        e.target.style.marginLeft = "0px";
-        setIsRight(false);
-        setIsLeft(true);
-      }
-    });
+    if (navigator.userAgentData?.mobile) {
+      noBtn.addEventListener("click"),
+        (e) => {
+          if (isLeft) {
+            e.target.style.marginLeft = "15vw";
+            e.target.style.marginRight = "0px";
+            setIsRight(true);
+            setIsLeft(false);
+          } else if (!isLeft) {
+            e.target.style.marginRight = "15vw";
+            e.target.style.marginLeft = "0px";
+            setIsRight(false);
+            setIsLeft(true);
+          }
+        };
+    } else {
+      noBtn.addEventListener("mouseover", (e) => {
+        if (isLeft) {
+          e.target.style.marginLeft = "15vw";
+          e.target.style.marginRight = "0px";
+          setIsRight(true);
+          setIsLeft(false);
+        } else if (!isLeft) {
+          e.target.style.marginRight = "15vw";
+          e.target.style.marginLeft = "0px";
+          setIsRight(false);
+          setIsLeft(true);
+        }
+      });
+    }
   }, [isLeft, isRight]);
 
   function success() {
@@ -28,7 +45,7 @@ export default function Spanish() {
   }
 
   function failiure() {
-    alert("Ocurrió un error, por favor intente de nuevo mas tarde");
+    alert("Esa opción no es valida, por favor intente de nuevo");
   }
 
   return (

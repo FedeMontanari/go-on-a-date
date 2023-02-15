@@ -8,19 +8,36 @@ function App() {
 
   useEffect(() => {
     const noBtn = document.getElementById("noBtn");
-    noBtn.addEventListener("mouseover", (e) => {
-      if (isLeft) {
-        e.target.style.marginLeft = "15vw";
-        e.target.style.marginRight = "0px";
-        setIsRight(true);
-        setIsLeft(false);
-      } else if (!isLeft) {
-        e.target.style.marginRight = "15vw";
-        e.target.style.marginLeft = "0px";
-        setIsRight(false);
-        setIsLeft(true);
-      }
-    });
+    if (navigator.userAgentData?.mobile) {
+      noBtn.addEventListener("click"),
+        (e) => {
+          if (isLeft) {
+            e.target.style.marginLeft = "15vw";
+            e.target.style.marginRight = "0px";
+            setIsRight(true);
+            setIsLeft(false);
+          } else if (!isLeft) {
+            e.target.style.marginRight = "15vw";
+            e.target.style.marginLeft = "0px";
+            setIsRight(false);
+            setIsLeft(true);
+          }
+        };
+    } else {
+      noBtn.addEventListener("mouseover", (e) => {
+        if (isLeft) {
+          e.target.style.marginLeft = "15vw";
+          e.target.style.marginRight = "0px";
+          setIsRight(true);
+          setIsLeft(false);
+        } else if (!isLeft) {
+          e.target.style.marginRight = "15vw";
+          e.target.style.marginLeft = "0px";
+          setIsRight(false);
+          setIsLeft(true);
+        }
+      });
+    }
   }, [isLeft, isRight]);
 
   function success() {
@@ -28,7 +45,7 @@ function App() {
   }
 
   function failiure() {
-    alert("An error occured, please try again");
+    alert("That's not a valid option, try again");
   }
 
   return (
