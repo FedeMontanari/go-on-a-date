@@ -3,42 +3,39 @@ import { Link } from "react-router-dom";
 import "./App.css";
 
 export default function Spanish() {
-  const [isLeft, setIsLeft] = useState(true);
-  const [isRight, setIsRight] = useState(false);
+  const [position, setPosition] = useState("left");
 
   useEffect(() => {
     const noBtn = document.getElementById("noBtn");
-    if (navigator.userAgentData?.mobile) {
-      noBtn.addEventListener("click"),
-        (e) => {
-          if (isLeft) {
-            e.target.style.marginLeft = "15vw";
-            e.target.style.marginRight = "0px";
-            setIsRight(true);
-            setIsLeft(false);
-          } else if (!isLeft) {
-            e.target.style.marginRight = "15vw";
-            e.target.style.marginLeft = "0px";
-            setIsRight(false);
-            setIsLeft(true);
-          }
-        };
-    } else {
+    if (!navigator.userAgentData?.mobile) {
       noBtn.addEventListener("mouseover", (e) => {
-        if (isLeft) {
-          e.target.style.marginLeft = "15vw";
-          e.target.style.marginRight = "0px";
-          setIsRight(true);
-          setIsLeft(false);
-        } else if (!isLeft) {
+        if (position === "right") {
           e.target.style.marginRight = "15vw";
           e.target.style.marginLeft = "0px";
-          setIsRight(false);
-          setIsLeft(true);
+          setPosition("left");
+        } else if (position === "left") {
+          e.target.style.marginLeft = "15vw";
+          e.target.style.marginRight = "0px";
+          setPosition("right");
         }
       });
+    } else {
+      noBtn.addEventListener("click", (e) => {
+        if (position === "right") {
+          e.target.style.marginRight = "30vw";
+          e.target.style.marginLeft = "0px";
+          setPosition("left");
+        } else if (position === "left") {
+          e.target.style.marginLeft = "30vw";
+          e.target.style.marginRight = "0px";
+          setPosition("right");
+        }
+      });
+      failiure = () => {
+        return;
+      };
     }
-  }, [isLeft, isRight]);
+  }, [position]);
 
   function success() {
     alert("Genial! Yo te escribo :)");
@@ -59,7 +56,7 @@ export default function Spanish() {
           No
         </button>
       </div>
-      <Link to="/en">Enlgish</Link>
+      <Link to="/en">English</Link>
     </div>
   );
 }
