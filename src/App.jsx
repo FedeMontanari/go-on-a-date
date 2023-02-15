@@ -5,37 +5,33 @@ import "./App.css";
 function App() {
   const [position, setPosition] = useState("left");
 
-  useEffect(() => {
-    const noBtn = document.getElementById("noBtn");
+  function clickHandler(e) {
     if (!navigator.userAgentData?.mobile) {
-      noBtn.addEventListener("mouseover", (e) => {
-        if (position === "right") {
-          e.target.style.marginRight = "15vw";
-          e.target.style.marginLeft = "0px";
-          setPosition("left");
-        } else if (position === "left") {
-          e.target.style.marginLeft = "15vw";
-          e.target.style.marginRight = "0px";
-          setPosition("right");
-        }
-      });
-    } else {
-      noBtn.addEventListener("click", (e) => {
-        if (position === "right") {
-          e.target.style.marginRight = "30vw";
-          e.target.style.marginLeft = "0px";
-          setPosition("left");
-        } else if (position === "left") {
-          e.target.style.marginLeft = "30vw";
-          e.target.style.marginRight = "0px";
-          setPosition("right");
-        }
-      });
-      failiure = () => {
-        return;
-      };
+      failiure();
+      return;
     }
-  }, [position]);
+    if (position === "right") {
+      e.target.style.marginRight = "30vw";
+      e.target.style.marginLeft = "0px";
+      setPosition("left");
+    } else if (position === "left") {
+      e.target.style.marginLeft = "30vw";
+      e.target.style.marginRight = "0px";
+      setPosition("right");
+    }
+  }
+
+  function hoverHandler(e) {
+    if (position === "right") {
+      e.target.style.marginRight = "15vw";
+      e.target.style.marginLeft = "0px";
+      setPosition("left");
+    } else if (position === "left") {
+      e.target.style.marginLeft = "15vw";
+      e.target.style.marginRight = "0px";
+      setPosition("right");
+    }
+  }
 
   function success() {
     alert("Great! I'll be in touch :)");
@@ -52,7 +48,12 @@ function App() {
         <button id="yesBtn" onClick={() => success()}>
           Yes
         </button>
-        <button id="noBtn" onClick={() => failiure()} tabIndex="-1">
+        <button
+          id="noBtn"
+          onClick={(e) => clickHandler(e)}
+          onMouseOver={(e) => hoverHandler(e)}
+          tabIndex="-1"
+        >
           No
         </button>
       </div>
