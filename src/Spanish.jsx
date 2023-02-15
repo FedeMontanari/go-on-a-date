@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./App.css";
 
 export default function Spanish() {
@@ -41,9 +42,7 @@ export default function Spanish() {
           No
         </button>
       </div>
-      <a href="/en" className="langLink">
-        English
-      </a>
+      <Link to="/en">Enlgish</Link>
     </div>
   );
 }

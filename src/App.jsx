@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./App.css";
 
 function App() {
@@ -41,9 +42,7 @@ function App() {
           No
         </button>
       </div>
-      <a href="/es" className="langLink">
-        Español
-      </a>
+      <Link to="/es">Español</Link>
     </div>
   );
 }
