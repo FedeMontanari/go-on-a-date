@@ -1,0 +1,30 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 20vh;
+}
+
+#yesBtn {
+  background-color: #4CAF50;
+}
+
+#noBtn {
+  background-color: #f44336;
+  transition: linear 0.1s;
+  user-select: none;
+}
