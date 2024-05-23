@@ -19,10 +19,6 @@ export default function Maple() {
     setIsOpen(!isOpen);
   }
 
-  //   function success() {
-  //     alert("Great! I'll be in touch :)");
-  //   }
-
   return (
     <div className="App">
       <h1>Go on a date?</h1>
@@ -41,7 +37,7 @@ export default function Maple() {
               <h1>I'm coming for you bb</h1>
               <img
                 src="https://cdn.discordapp.com/attachments/1052715507171737682/1075476362820862113/image0.gif"
-                alt="Gorgeous man blowing you a kiss"
+                alt="Animated gif of a gorgeous man blowing you a kiss"
               />
             </>
           }
